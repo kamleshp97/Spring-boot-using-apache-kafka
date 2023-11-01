@@ -1,0 +1,29 @@
+1. Start zookeepar
+D:\Softwares\kafka_2.12-3.6.0>.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+2. Start kafka server
+D:\Softwares\kafka_2.12-3.6.0>.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+3. create topics (multiple topics can create)
+D:\Softwares\kafka_2.12-3.6.0\bin\windows>kafka-topics --bootstrap-server  PLAINTEXT://host.docker.internal:9092 --topic first_topic --create --partitions 3 --replication-factor 1
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4. Get list of all created topics
+D:\Softwares\kafka_2.12-3.6.0\bin\windows>kafka-topics --bootstrap-server  PLAINTEXT://host.docker.internal:9092 --list
+
+5. Get Deatils of specific topic (give partitions and replication-factor for topic)
+D:\Softwares\kafka_2.12-3.6.0\bin\windows>kafka-topics --bootstrap-server  PLAINTEXT://host.docker.internal:9092 --describe --topic first_topic
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6. Start offset explorere app (to monitor messages)
+provide connection 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7. strat producer (we can write message here)
+D:\Softwares\kafka_2.12-3.6.0\bin\windows>kafka-console-producer.bat --broker-list  PLAINTEXT://host.docker.internal:9092 --topic first_topic
+
+8. start consumer
+D:\Softwares\kafka_2.12-3.6.0\bin\windows>kafka-console-consumer.bat --bootstrap-server PLAINTEXT://host.docker.internal:9092 --topic first_topic --from-beginning
